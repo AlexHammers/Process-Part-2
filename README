@@ -1,0 +1,9 @@
+An application that creates child processes and facilitates communication between the precesses.
+
+Discussion
+
+This is good object oriented design because it provides modularity and reusable capabilities.
+
+Overloaded destructors that take parameters, or one destructor that takes a parameter with a switch statement inside.
+
+The child needs to send a signal to the parent so it knows it's closing. The child would need to sleep right before it closes to give the parent time to read from the child's write.
