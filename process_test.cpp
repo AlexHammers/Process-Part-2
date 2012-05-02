@@ -6,11 +6,13 @@
 #include <memory>
 #include "Process.hpp"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 	using namespace std;
 	std::vector<char*> args;
 
-	for (int nn = 1; nn < argc; ++nn) {
+	for (int nn = 1; nn < argc; ++nn)
+	{
 		std::cerr << "Arg: " << argv[nn] << std::endl;
 		args.push_back(argv[nn]);
 	}
@@ -21,22 +23,20 @@ int main(int argc, char *argv[]) {
 
 	{
 		Process myproc(args, true);
-		sleep(5);
-		/* write/read test
-		 for(int n=0; n<5; ++n) {
-		 stringstream ss(line);
-		 ss << "This is test " << n << endl;
-		 line = ss.str();
-		 cerr << "calling write with line=" << line << "END" << endl;
-		 myproc.write(line);
-		 output = myproc.read();
-		 cerr << "output from process: " << output << "END" << endl;
-		 }
-		 */
-		cerr << "Process object destroyed" << endl;
-	}
+		//write/read test
+		for (int n = 0; n < 5; ++n)
+		{
+			stringstream ss;
+			ss << "1+ " << n << endl;
+			cerr << "calling write with line=" << ss.str() << "END" << endl;
+			myproc.write(ss.str());
+			string output = myproc.read();
+			cerr << "output from process: " << output << "END" << endl;
+		}
+
+	cerr << "Process object destroyed" << endl;
+}
 	cerr << "Program exiting. Confirm child process has been cleaned up."
 			<< endl;
-	sleep(5);
 	return (EXIT_SUCCESS);
 }
